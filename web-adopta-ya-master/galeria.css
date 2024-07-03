@@ -1,0 +1,183 @@
+/* Grid de la Galeria fotografica */
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+ h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 5%; /* Ajusta según la altura del header */
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 700px;
+  max-height: 700px;
+  margin: auto;
+  display: block;
+}
+
+.lightbox:target {
+  display: flex;
+}
+/* CSS general */
+* {
+  /* asterisco, trabaja con todos los elementos... */
+  box-sizing: border-box; /* para cuando agrego margin, o padding no crezca de mas */
+}
+
+html {
+  scroll-behavior: smooth; /* Cambia de sección con un movimiento mas despacio */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0; /* saca el margen xq es feo de default COMO PRIMER INSTANCIA */
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+.container-galeria {
+  max-width: 1400px; /* Cuando agrando la web no va a superar los 1400 */
+  margin: auto; /* y se atomatiza de forma centrada al superar los 1400 */
+}
+
+header {
+  background-color: rgb(245, 245, 245); /* fondo del header */
+  top: 0
+;
+}
+
+header .logo {
+  /* si pongo header y ".logo" se enmarca el hijo (lo que está adentro) */
+  margin: 0;
+  padding: 25px 30px; /* para que cuando se achique o agrande, mantenga un margen o espaciado coherente */
+  font-weight: bold;
+  color: rgb(10, 200, 0);
+  font-size: 1.6em;
+}
+
+header .container-galeria {
+  display: flex;
+  flex-direction: column; /* se ordenen en columna */
+  align-items: center;
+}
+header nav {
+  /* no hace falta ponerle el .nav aparentemente */
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* si necesitamos que se centre */
+  padding-bottom: 25px;
+}
+
+header a {
+  padding: 5px 12px;
+  text-decoration: none; /* sacarle el subrayado a los link */
+  font-weight: bold;
+  color: black; /* le ponemos negrita */
+}
+
+header a:hover {
+  color: rgb(
+    10,
+    200,
+    0
+  ); /* lo mismo, para qe se ponga de color cuando paso por arriba */
+}
+
+#acerca-de .container-galeria {
+  /*  */
+  text-align: center;
+  padding: 200px 12px;
+}
+#preguntas-frecuentes .container-galeria {
+  padding: 150px 12px;
+}
+#requisitos .container-galeria {
+  text-align: center;
+  padding: 250px 12px;
+}
+
+footer {
+  background-color: rgb(230, 230, 230);
+}
+
+footer p {
+  margin: 0;
+  padding: 12px;
+  color: rgb(100, 100, 100);
+}
+
+footer .container{
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+@media (min-width: 850px){  /* cuando supere esos PX se aplican los siguientes estilos */
+    header{
+        position: fixed;   /* para que quede fijo cuando escrolee */
+        width: 100%;      /* siempre que usamos POSITION: FIXED hay q poner el width */
+    }
+
+    header .container-galeria{
+        flex-direction: row;
+        justify-content: space-between; /* para separar los elementos, que uno vaya en una esquina y el otro en la otra */
+    }
+
+    header nav{
+        flex-direction: row;
+        padding-bottom: 0;      /* para sacarle el padding */
+        padding-right: 20px;  /* para qe no toque la esquina */
+    }
+    #acerca-de .container-galeria{
+        display: flex;
+        justify-content: space-evenly;  /* para que siempre los separe de formas iguales */
+    }
+    #requisitos .container-galeria{
+        text-align: initial;     
+    }
+    footer .container{
+        justify-content: flex-end;
+    }
+}

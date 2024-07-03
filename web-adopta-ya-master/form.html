@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="media/favicon_perrito.PNG" type="image/png">
+    <link rel="stylesheet" href="form.css">
+    <title>AdoptaYA</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Formulario de Contacto</h2>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="phone">Teléfono:</label>
+            <input type="number" id="phone" name="phone" min="0" pattern="\d*" title="Por favor, ingrese solo números.">
+            
+            <label for="animal">Animal de Interés:</label>
+            <select id="animal" name="animal">
+                <option value="">Seleccione un animal</option>
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="otro">Otro</option>
+            </select>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="subscribe" name="subscribe">
+                <label for="subscribe">Deseo recibir noticias y actualizaciones</label>
+            </div>
+            
+            <div class="radiobutton-group">
+                <input type="radio" id="contact-method-email" name="contact-method" value="email">
+                <label for="contact-method-email">Prefiero ser contactado por correo electrónico</label>
+            </div>
+            <div class="radiobutton-group">
+                <input type="radio" id="contact-method-phone" name="contact-method" value="phone">
+                <label for="contact-method-phone">Prefiero ser contactado por teléfono</label>
+            </div>
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            
+            <button type="submit" class="button submit-button">
+                Enviar
+            </button>
+            
+                <button class="button return-button" onclick="location.href='index.html'">
+                    Volver a Inicio
+                </button>
+          
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const animal = document.getElementById('animal').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !phone || !animal || !message) {
+                alert('Todos los campos son obligatorios.');
+                return false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Por favor, ingrese un correo electrónico válido.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
